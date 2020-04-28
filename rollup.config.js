@@ -1,7 +1,8 @@
 import svelte from 'rollup-plugin-svelte';
 import resolve from '@rollup/plugin-node-resolve';
 import commonjs from '@rollup/plugin-commonjs';
-import css from 'rollup-plugin-css-only';
+import postcss from 'rollup-plugin-postcss';
+import html from '@rollup/plugin-html';
 import url from '@rollup/plugin-url';
 import livereload from 'rollup-plugin-livereload';
 import { terser } from 'rollup-plugin-terser';
@@ -12,26 +13,23 @@ const production = !process.env.ROLLUP_WATCH;
 export default {
   input: 'src/main.js',
   output: {
+    entryFileNames: '[name].[hash].js',
     sourcemap: true,
     format: 'es',
     name: 'app',
     dir: 'public/build'
   },
   plugins: [
-    url({
-      publicPath: 'build/',
-    }),
+    url(),
     svelte({
       // enable run-time checks when not in production
       dev: !production,
-      // we'll extract any component CSS out into
-      // a separate file - better for performance
-      css: css => {
-        css.write('public/build/bundle.css');
-      },
       emitCss: true,
     }),
-    css({ output: 'public/build/bundle.css' }),
+    postcss({
+      extract: true,
+      sourceMap: true,
+    }),
 
     // If you have external dependencies installed from
     // npm, you'll most likely need these plugins. In
@@ -43,6 +41,10 @@ export default {
       dedupe: ['svelte']
     }),
     commonjs(),
+
+    html({
+      title: 'Tarot de Pigalle',
+    }),
 
     // In dev mode, call `npm run start` once
     // the bundle has been generated
@@ -71,7 +73,7 @@ function serve() {
 
         // Starts the sirv server
         // FIXME: does not kill it upon crashes :(
-        require('child_process').spawn('sirv', ['public', '--dev'], {
+        require('child_process').spawn('sirv', ['public/build', '--dev'], {
           stdio: ['ignore', 'inherit', 'inherit'],
           shell: true
         });

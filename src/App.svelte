@@ -74,6 +74,7 @@ card {
 }
 
 card img {
+  cursor: pointer;
   position: absolute;
   /* because card is about 230px in size */
   left: -115px;
@@ -94,6 +95,6 @@ card img {
 
 .hidden {
   opacity: 0;
-  transform: rotate(360deg) scale(1, 0);
+  transform: rotate(720deg) scale(1, 0);
 }
 </style>
