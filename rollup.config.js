@@ -9,7 +9,6 @@ import { terser } from 'rollup-plugin-terser';
 
 const production = !process.env.ROLLUP_WATCH;
 
-
 export default {
   input: 'src/main.js',
   output: {
@@ -44,6 +43,10 @@ export default {
 
     html({
       title: 'Tarot de Pigalle',
+      meta: [
+        { charset: 'utf-8' },
+        { content: 'width=device-width, initial-scale=1', name: 'viewport' },
+      ]
     }),
 
     // In dev mode, call `npm run start` once
