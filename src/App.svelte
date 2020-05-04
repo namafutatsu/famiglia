@@ -1,15 +1,21 @@
 <script>
   import cardBackground from './assets/img/card-background.png'
+  import pigalleCards from './cards'
 
-  function createCard (n) {
+  function shuffledCards () {
+    console.log(pigalleCards)
+    return pigalleCards.sort(() => 0.5 - Math.random())
+  }
+
+  // This should be a real Svelte Card component
+  function cardComponent (card) {
     const self = {
-      id: `${n}`,
-      label: `Card number ${n}`,
-      src: `/${cardBackground}`,
+      ...card,
+      src: null,
       isClicked: false
     }
     self.onClick = function () {
-      import('./assets/img/cards/TAROT-DE-PIGALLE_43_TroisBatons_RVB.jpg').then((data)=> {
+      card.module().then((data)=> {
         self.src = data.default
         self.isClicked = true
         items = items
@@ -18,7 +24,7 @@
     return self
   }
 
-  const items = [...Array(3).keys()].map(i => createCard(i))
+  const items = shuffledCards().slice(0, 3).map((card) => cardComponent(card))
 </script>
 
 <wrapper>
@@ -29,7 +35,7 @@
       {#each items as item}
         <column>
           <card>
-            <img alt={item.label} src={item.src} class="{item.isClicked ? 'visible' : 'hidden'}" />
+            <img alt={item.name} src={item.src} class="{item.isClicked ? 'visible' : 'hidden'}" />
             <img alt='card background' src={cardBackground} class="{item.isClicked ? 'hidden' : 'visible'}" on:click={item.onClick}/>
           </card>
         </column>
