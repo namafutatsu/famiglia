@@ -87,7 +87,7 @@ card img {
   height: 100%;
   transition: all 1s ease-in-out;
   border-radius: 12px;
-  box-shadow: 0px 0px 10px black;
+  box-shadow: 0px 0px 10px #ddd;
 }
 
 /*
@@ -103,7 +103,7 @@ card img {
 
 .hidden {
   opacity: 0;
-  transform: rotateX(360deg) scaleY(0.5);
+  transform: rotateX(360deg) scaleY(0.3);
   transform-origin: bottom;
 
 }
