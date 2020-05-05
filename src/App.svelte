@@ -85,9 +85,10 @@ card img {
   /* because card is about 230px in size */
   left: -115px;
   height: 100%;
-  transition: all 1s ease-in-out;
   border-radius: 12px;
   box-shadow: 0px 0px 10px #ddd;
+
+  transition: all 1.5s ease-in-out;
 }
 
 /*
@@ -103,14 +104,14 @@ card img {
 
 .hidden {
   opacity: 0;
-  transform: rotateX(360deg) scaleY(0.3);
-  transform-origin: bottom;
+  transform: rotateY(180deg);
+  transform-origin: 50% 0%;
 
 }
 
 .visible {
   opacity: 1;
-  transform: rotateX(0deg) scaleY(1.0);
-  transform-origin: bottom;
+  transform: rotateY(0deg);
+  transform-origin: 50% 0%;
 }
 </style>
