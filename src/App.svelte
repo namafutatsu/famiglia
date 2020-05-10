@@ -1,6 +1,7 @@
 <script>
   import pigalleCards from './cards'
   import Card from './Card.svelte'
+  import Modal from './Modal.svelte'
 
   function shuffledCards () {
     return pigalleCards.sort(() => 0.5 - Math.random())
@@ -26,6 +27,8 @@
       {/each}
     </row>
   </main>
+
+  <Modal />
 
   <footer class="header-footer">
     <p>Cards design <a href='https://romaintige.myportfolio.com/' target='_blank'>Romain Tigé</a></p>

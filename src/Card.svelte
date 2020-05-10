@@ -1,6 +1,8 @@
 <script>
 import cardBackground from './assets/img/card-background.png'
 
+import { displayModal, modalText } from './stores'
+
 let src = null
 let isClicked = false
 
@@ -9,10 +11,15 @@ export let imageModule;
 export let shouldFlip;
 
 function onClick () {
-  imageModule().then((data)=> {
-    src = data.default
-    isClicked = true
-  })
+  if (isClicked) {
+    $displayModal = true
+    $modalText = name
+  } else {
+    imageModule().then((data)=> {
+      src = data.default
+      isClicked = true
+    })
+  }
 }
 </script>
 
