@@ -15,7 +15,7 @@
 </script>
 
 <wrapper>
-  <header></header>
+  <header class="header-footer">Le Tarot de Pigalle</header>
 
   <main>
     <row>
@@ -27,7 +27,10 @@
     </row>
   </main>
 
-  <footer></footer>
+  <footer class="header-footer">
+    <p>Cards design <a href='https://romaintige.myportfolio.com/' target='_blank'>Romain Tigé</a></p>
+    <p>Texts <a href='https://victoire-vager.herokuapp.com/' target='_blank'>Victoire Vager</a></p>
+  </footer>
 </wrapper>
 
 <style>
@@ -35,6 +38,27 @@ wrapper {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
+}
+
+.header-footer {
+  display: flex;
+  align-items: center;
+  height: 5rem;
+  font-family: 'Dancing Script', cursive;
+  color: #dedede;
+  text-shadow: 3px 4px 7px rgba(120,120,100,0.8);
+}
+
+header {
+  justify-content: space-evenly;
+  font-size: 2rem;
+}
+
+footer {
+  padding: 1rem;
+  font-size: 1rem;
+  flex-direction: column;
+  justify-content: center;
 }
 
 main {
