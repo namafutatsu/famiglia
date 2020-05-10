@@ -40,6 +40,7 @@ function makeHtmlTemplate({ attributes, files, meta, publicPath, title }) {
         <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
         <link rel="manifest" href="/site.webmanifest">
         <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600&display=swap" rel="stylesheet">
+
         ${links}
       </head>
       <body>
@@ -89,7 +90,19 @@ export default {
       title: 'Tarot de Pigalle',
       meta: [
         { charset: 'utf-8' },
-        { content: 'width=device-width, initial-scale=1', name: 'viewport' },
+        { content: 'width=device-width, initial-scale=1, shrink-to-fit=no', name: 'viewport' },
+        { content: 'application/xhtml+xml; charset=utf-8', 'http-equiv': 'content-type' },
+        { itemprop: 'name', content: 'Le Tarot de Pigalle' },
+        { itemprop: 'description', content: 'Un jeu de cartes par Romain Tigé et Victoire Vager' },
+        { name: 'description', content: 'Le Tarot de Pigalle' },
+        { name: 'keywords', content: 'tarot,jeu,flaque,pigalle,fete,burlesque,paris' },
+        { name: 'robots', content: 'all' },
+        { name: 'rating', content: 'General' },
+        { name: 'revisit-after', content: '5 days' },
+        { name: 'distribution', content: 'global' },
+        { name: 'Identifier-URL', content: '//tarot.laflaque.fr' },
+        { name: 'author', content: 'Victor Perron' },
+        { name: 'application-name', lang:'fr', content: 'Le Tarot De Pigalle' },
       ],
       template: makeHtmlTemplate,
     }),
