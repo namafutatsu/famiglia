@@ -6,7 +6,12 @@
     return pigalleCards.sort(() => 0.5 - Math.random())
   }
 
+  function randBool () {
+    return Math.random() >= 0.5
+  }
+
   const items = shuffledCards().slice(0, 3)
+  items.forEach((card) => card.shouldFlip = randBool())
 </script>
 
 <wrapper>
@@ -16,7 +21,7 @@
     <row>
       {#each items as item}
         <column>
-          <Card name={item.name} imageModule={item.module} />
+        <Card name={item.name} imageModule={item.module} shouldFlip={item.shouldFlip} />
         </column>
       {/each}
     </row>

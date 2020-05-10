@@ -6,6 +6,7 @@ let isClicked = false
 
 export let name;
 export let imageModule;
+export let shouldFlip;
 
 function onClick () {
   imageModule().then((data)=> {
@@ -16,8 +17,13 @@ function onClick () {
 </script>
 
 <card>
-  <img alt={name} src={src} class="{isClicked ? 'visible' : 'hidden'}" />
-  <img alt='card background' src={cardBackground} class="{isClicked ? 'hidden' : 'visible'}" on:click={onClick}/>
+  <img
+    alt={name}
+    src={src}
+    class="{isClicked ? 'visible' : 'hidden'}"
+    class:flipY="{shouldFlip}"
+  />
+  <img alt='background' src={cardBackground} class="{isClicked ? 'hidden' : 'visible'}" on:click={onClick}/>
 </card>
 
 <style>
@@ -26,8 +32,11 @@ card {
   position: relative;
 }
 
-img {
+img[alt='background'] {
   cursor: pointer;
+}
+
+img {
   position: absolute;
   /* because card is about 230px in size */
   left: -115px;
@@ -50,5 +59,17 @@ img {
   opacity: 1;
   transform: rotateY(0deg);
   transform-origin: 50% 0%;
+}
+
+.hidden.flipY {
+  opacity: 0;
+  transform: rotateY(180deg) scale(-1);
+  transform-origin: 50% 50%;
+}
+
+.visible.flipY {
+  opacity: 1;
+  transform: rotateY(0deg) scale(-1) ;
+  transform-origin: 50% 50%;
 }
 </style>
